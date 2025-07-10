@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_chatbot">#3C553D</color>
+    <color name="color_responseUser">#373E4E</color>
+    <color name="color_navigationIcon">#484C52</color>
+    <color name="color_navigationIconHover">#1A4D1C</color>
+    <color name="color_homeNews">#3D513E</color>
+    <color name="color_authorNews">#798E7A</color>
+    <color name="color_dateNews">#B69F49</color>
+    <color name="color_truckButton">#EAF2D7</color>
+    <color name="color_loginSkip">#7A8194</color>
+    <color name="color_infoProfile">#E7ECCB</color>
+    <color name="color_borderColor">#7B7C76</color>
+    <color name="color_inputValue">#45463F</color>
+    <color name="color_inputEdit">#FFF7DC</color>
+    <color name="bg_phone">#FCFCFE</color>
+
+</resources>

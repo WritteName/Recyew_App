@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AppMov_Prod</string>
+
+    <!-- Generalidades -->
+        <!-- Nombre del app-->
+        <string name="name_min">recyew</string>
+        <string name="name">Recyew</string>
+        <string name="name_may">RECYEW</string>
+
+    <!-- Pantalla de ingreso a la app -->
+    <string name="btn_Ingreso">Login</string>
+    <string name="btn_Registro">Register</string>
+    <string name="txt_Saltear">Skip</string>
+
+    <!-- Mensajes -->
+    <string name="msj_title1">Recycle from Home &amp; Earn Rewards</string>
+    <string name="msj_subTitle1"> Track material prices, report issues to earn points, and trade recyclables for real rewards.</string>
+    <string name="msj_title2">Nearby Recycling Stations</string>
+    <string name="msj_subTitle2"> Find the nearest recycling drop-off points with real-time updates.</string>
+    <string name="msj_title3">Nearby Recycling Stations</string>
+    <string name="msj_subTitle3">Find the nearest recycling drop-off points with real-time updates.</string>
+
+    <!-- Pantalla de Logueo -->
+    <string name="txt_title_logueo">Login</string>
+    <string name="title_correo">Email</string>
+    <string name="hint_correo">Enter your Email</string>
+    <string name="title_clave">Contraseña</string>
+    <string name="hint_contrasena">Enter your Password</string>
+    <string name="txt_olvido">Forgot Password?</string>
+    <string name="txt_opcion">Don’t have an account? Register Now</string>
+    <string name="btn_google">Continue with Google</string>
+    <string name="btn_facebook">Continue with Facebook</string>
+    <!-- Pantalla de Registro -->
+    <string name="txt_title_signup">Sign up</string>
+
+</resources>
