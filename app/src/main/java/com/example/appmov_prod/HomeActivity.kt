@@ -12,7 +12,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Fragmento por defecto (puedes cambiarlo por el de mapa, reciclaje, etc.)
         loadFragment(ProfileFragment())
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
