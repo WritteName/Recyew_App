@@ -1,11 +1,13 @@
 package com.example.appmov_prod
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -31,6 +33,14 @@ class MainActivity : AppCompatActivity() {
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
+
+        findViewById<MaterialButton>(R.id.btnLogin).setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        findViewById<MaterialButton>(R.id.btnRegister).setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+        }
 
         handler = Handler(Looper.getMainLooper())
         autoSlide()
