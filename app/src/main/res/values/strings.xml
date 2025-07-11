@@ -24,13 +24,17 @@
     <string name="txt_title_logueo">Login</string>
     <string name="title_correo">Email</string>
     <string name="hint_correo">Enter your Email</string>
-    <string name="title_clave">Contraseña</string>
+    <string name="title_clave">Password</string>
     <string name="hint_contrasena">Enter your Password</string>
     <string name="txt_olvido">Forgot Password?</string>
     <string name="txt_opcion">Don’t have an account? Register Now</string>
     <string name="btn_google">Continue with Google</string>
     <string name="btn_facebook">Continue with Facebook</string>
+
     <!-- Pantalla de Registro -->
-    <string name="txt_title_signup">Sign up</string>
+    <string name="txt_title_registro">Sign up</string>
+    <string name="title_confirmar_lave">Confirm Password</string>
+    <string name="hint_re_contrasena">Enter your Password Again</string>
+    <string name="txt_opcion2">Don’t have an account? Login</string>
 
 </resources>
