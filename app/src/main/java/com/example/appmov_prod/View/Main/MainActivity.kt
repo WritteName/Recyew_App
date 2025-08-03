@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.appmov_prod.View.Login.LoginActivity
 import com.example.appmov_prod.R
-import com.example.appmov_prod.SignupActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     private var page = 0
 
     private lateinit var btnDirIngreso: MaterialButton
-    private lateinit var btnDirRegistro: MaterialButton
     private lateinit var tabLayout: TabLayout
 
     private val viewModel: MainViewModel by viewModels()
@@ -43,16 +41,12 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         viewPager = findViewById(R.id.viewPager)
         tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        btnDirIngreso = findViewById<MaterialButton>(R.id.btnLogin)
-        btnDirRegistro = findViewById<MaterialButton>(R.id.btnRegister)
+        btnDirIngreso = findViewById<MaterialButton>(R.id.btnInit)
     }
 
     private fun setupClickListeners() {
         btnDirIngreso.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-        }
-        btnDirRegistro.setOnClickListener {
-            startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 
