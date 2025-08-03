@@ -1,11 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AppMov_Prod</string>
 
     <!-- Generalidades -->
-        <!-- Nombre del app-->
-        <string name="name_min">recyew</string>
-        <string name="name">Recyew</string>
-        <string name="name_may">RECYEW</string>
+    <string name="name_min">recyew</string>
+    <string name="name">Recyew</string>
+    <string name="name_may">RECYEW</string>
 
     <!-- Pantalla de ingreso a la app -->
     <string name="btn_Ingreso">Login</string>
@@ -27,7 +27,7 @@
     <string name="title_clave">Password</string>
     <string name="hint_contrasena">Enter your Password</string>
     <string name="txt_olvido">Forgot Password?</string>
-    <string name="txt_opcion">Don’t have an account? Register Now</string>
+    <string name="txt_opcion">Don\'t have an account? Register Now</string>
     <string name="btn_google">Continue with Google</string>
     <string name="btn_facebook">Continue with Facebook</string>
 
@@ -35,6 +35,9 @@
     <string name="txt_title_registro">Sign up</string>
     <string name="title_confirmar_lave">Confirm Password</string>
     <string name="hint_re_contrasena">Enter your Password Again</string>
-    <string name="txt_opcion2">Don’t have an account? Login</string>
+    <string name="txt_opcion2">Don\'t have an account? Login</string>
+
+    <!-- Google Sign-In Configuration -->
+    <string name="default_web_client_id">your_google_client_id_here</string>
 
 </resources>
