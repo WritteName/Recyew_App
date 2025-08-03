@@ -1,6 +1,7 @@
 package com.example.appmov_prod.Repository
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.tasks.await
 
 class AuthRepository(private val auth: FirebaseAuth = FirebaseAuth.getInstance()) {
@@ -30,4 +31,17 @@ class AuthRepository(private val auth: FirebaseAuth = FirebaseAuth.getInstance()
         }
     }
 
+    suspend fun loginWithGoogle(idToken: String): Result<Unit> {
+        return try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            val result = auth.signInWithCredential(credential).await()
+            if (result.user != null) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Error al autenticar con Google"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

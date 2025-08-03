@@ -15,10 +15,16 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.example.appmov_prod.ViewModel.LoginViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
+import com.google.android.gms.common.api.ApiException
 
 class LoginActivity : AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     private lateinit var btnIngreso: MaterialButton
     private lateinit var inputLayoutEmail: TextInputLayout
@@ -28,11 +34,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var inputConfirmPassword: TextInputLayout
     private lateinit var etRepClave: TextInputEditText
     private lateinit var txtNoClave: TextView
+    private lateinit var btnGoogle: SignInButton
     private lateinit var txtMessage: TextView
     private lateinit var txtMode: TextView
     private lateinit var txtTitulo: TextView
 
     private var isLoginMode = true
+    private val GOOGLE_SIGN_IN_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,12 @@ class LoginActivity : AppCompatActivity() {
         initViews()
         setupClickListeners()
         observeViewModel()
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun initViews() {
@@ -53,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
         etRepClave = findViewById(R.id.etReClave)
         txtNoClave = findViewById(R.id.txtRestablecer)
         btnIngreso = findViewById(R.id.btnLogin)
+        btnGoogle = findViewById(R.id.btnLoginGoogle)
         txtMessage = findViewById(R.id.txtOp)
         txtMode = findViewById(R.id.txtCion)
     }
@@ -70,6 +85,10 @@ class LoginActivity : AppCompatActivity() {
         }
         txtMode.setOnClickListener {
             toggleMode()
+        }
+
+        btnGoogle.setOnClickListener {
+            signInWithGoogle()
         }
 
         val textWatcher = object : TextWatcher {
@@ -125,14 +144,14 @@ class LoginActivity : AppCompatActivity() {
 
         if (isLoginMode) {
             txtTitulo.text = "Login"
-            etRepClave.visibility = View.GONE
             txtNoClave.visibility = View.VISIBLE
+            btnIngreso.text = "Login"
             txtMessage.text = "Don't Have an account?"
             txtMode.text = "Register Now"
         } else {
             txtTitulo.text = "SignUp"
-            etRepClave.visibility = View.VISIBLE
             txtNoClave.visibility = View.GONE
+            btnIngreso.text = "Register"
             txtMessage.text = "Already have an account?"
             txtMode.text = "Login"
         }
@@ -155,5 +174,29 @@ class LoginActivity : AppCompatActivity() {
     private fun NavigateHome() {
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
+    }
+
+    private fun signInWithGoogle(){
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == GOOGLE_SIGN_IN_CODE) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                val idToken = account.idToken
+                if (idToken != null) {
+                    viewModel.signInWithGoogle(idToken)
+                } else {
+                    ShowAlert("No se pudo obtener el ID Token")
+                }
+            } catch (e: ApiException) {
+                ShowAlert("Google Sign-In falló: ${e.localizedMessage}")
+            }
+        }
     }
 }
