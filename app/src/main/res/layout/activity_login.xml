@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_phone"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".View.Main.MainActivity">
 
     <LinearLayout
         android:id="@+id/headerLayout"

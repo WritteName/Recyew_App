@@ -1,4 +1,4 @@
-package com.example.appmov_prod
+package com.example.appmov_prod.Model
 
 data class OnboardingItem(
     val imageRes: Int,

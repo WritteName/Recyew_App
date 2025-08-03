@@ -1,4 +1,4 @@
-package com.example.appmov_prod
+package com.example.appmov_prod.View.Main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appmov_prod.Model.OnboardingItem
+import com.example.appmov_prod.R
 
 class OnboardingAdapter(private val items: List<OnboardingItem>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
