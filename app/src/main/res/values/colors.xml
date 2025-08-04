@@ -16,5 +16,6 @@
     <color name="color_inputValue">#45463F</color>
     <color name="color_inputEdit">#FFF7DC</color>
     <color name="bg_phone">#FCFCFE</color>
+    <color name="color_botMessageBackground">#E8F5E8</color>
 
 </resources>
