@@ -21,11 +21,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 
-class MapsFragment : Fragment(), OnMapReadyCallback {
+class MapsFragment: Fragment(), OnMapReadyCallback {
 
     private lateinit var viewModel: MapsViewModel
     private lateinit var map: GoogleMap
@@ -54,10 +55,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.recyclePoints.observe(viewLifecycleOwner) { points ->
             for (point in points) {
-                map.addMarker(
-                    MarkerOptions()
+                val markerOptions = MarkerOptions()
                     .position(LatLng(point.latitude, point.longitude))
-                    .title(point.name))
+                    .title(point.name)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                map.addMarker(markerOptions)
             }
         }
 
