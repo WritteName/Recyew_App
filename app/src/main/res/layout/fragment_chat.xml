@@ -56,43 +56,74 @@
         android:padding="16dp"
         android:background="@android:color/white"
         android:elevation="4dp"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilMessageInput"
-            android:layout_width="0dp"
+        <!-- Unified Input Container with outlined border -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:boxCornerRadiusTopStart="24dp"
-            app:boxCornerRadiusTopEnd="24dp"
-            app:boxCornerRadiusBottomStart="24dp"
-            app:boxCornerRadiusBottomEnd="24dp"
-            app:hintTextColor="@color/black">
+            android:background="@drawable/input_container_background"
+            android:padding="4dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <!-- Image/Attachment Button integrated in the field -->
+            <ImageButton
+                android:id="@+id/btnAttachImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_image"
+                android:contentDescription="Adjuntar imagen"
+                android:scaleType="center"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <!-- Message Input Field -->
+            <EditText
                 android:id="@+id/etMessageInput"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
                 android:hint="Escribe tu mensaje..."
+                android:textColorHint="#757575"
+                android:textColor="#212121"
+                android:textSize="16sp"
                 android:maxLines="3"
+                android:minHeight="40dp"
+                android:gravity="center_vertical"
                 android:inputType="textMultiLine|textCapSentences"
-                android:imeOptions="actionSend"/>
+                android:imeOptions="actionSend"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintStart_toEndOf="@id/btnAttachImage"
+                app:layout_constraintEnd_toStartOf="@id/fabSendMessage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <!-- Send Button integrated in the field -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSendMessage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_send"
+                app:fabCustomSize="40dp"
+                app:backgroundTint="@color/black"
+                app:tint="@android:color/white"
+                app:borderWidth="0dp"
+                app:elevation="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabSendMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:src="@drawable/ic_send"
-            app:fabSize="mini"
-            app:backgroundTint="@color/black"
-            app:tint="@android:color/white"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

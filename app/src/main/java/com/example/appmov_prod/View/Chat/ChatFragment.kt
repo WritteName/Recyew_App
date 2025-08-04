@@ -3,6 +3,8 @@ package com.example.appmov_prod.View.Chat
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -15,8 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appmov_prod.R
 import com.example.appmov_prod.ViewModel.ChatViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 
 /**
@@ -31,9 +31,9 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
     private lateinit var rvChatMessages: RecyclerView
     private lateinit var rvQuickReplies: RecyclerView
     private lateinit var layoutQuickReplies: LinearLayout
-    private lateinit var tilMessageInput: TextInputLayout
-    private lateinit var etMessageInput: TextInputEditText
+    private lateinit var etMessageInput: EditText
     private lateinit var fabSendMessage: FloatingActionButton
+    private lateinit var btnAttachImage: ImageButton
     private lateinit var progressBarLoading: ProgressBar
     
     // Adapters
@@ -53,9 +53,9 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         rvChatMessages = view.findViewById(R.id.rvChatMessages)
         rvQuickReplies = view.findViewById(R.id.rvQuickReplies)
         layoutQuickReplies = view.findViewById(R.id.layoutQuickReplies)
-        tilMessageInput = view.findViewById(R.id.tilMessageInput)
         etMessageInput = view.findViewById(R.id.etMessageInput)
         fabSendMessage = view.findViewById(R.id.fabSendMessage)
+        btnAttachImage = view.findViewById(R.id.btnAttachImage)
         progressBarLoading = view.findViewById(R.id.progressBarLoading)
     }
     
@@ -97,6 +97,11 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
     private fun setupClickListeners() {
         fabSendMessage.setOnClickListener {
             sendMessage()
+        }
+        
+        btnAttachImage.setOnClickListener {
+            // TODO: Implement image attachment functionality
+            Toast.makeText(context, "Función de imagen próximamente", Toast.LENGTH_SHORT).show()
         }
         
         etMessageInput.setOnEditorActionListener { _, actionId, _ ->

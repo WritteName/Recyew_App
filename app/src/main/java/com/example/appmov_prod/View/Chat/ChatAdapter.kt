@@ -27,7 +27,9 @@ class ChatAdapter : ListAdapter<ChatMessage, ChatAdapter.MessageViewHolder>(Mess
     }
     
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val currentMessage = getItem(position)
+        val previousMessage = if (position > 0) getItem(position - 1) else null
+        holder.bind(currentMessage, previousMessage)
     }
     
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +41,7 @@ class ChatAdapter : ListAdapter<ChatMessage, ChatAdapter.MessageViewHolder>(Mess
         
         private val timeFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
         
-        fun bind(message: ChatMessage) {
+        fun bind(message: ChatMessage, previousMessage: ChatMessage?) {
             if (message.isFromUser) {
                 // Show user message layout
                 layoutUserMessage.visibility = View.VISIBLE
@@ -52,8 +54,17 @@ class ChatAdapter : ListAdapter<ChatMessage, ChatAdapter.MessageViewHolder>(Mess
                 tvBotMessage.text = message.content
             }
             
-            // Set timestamp
-            tvTimestamp.text = timeFormatter.format(Date(message.timestamp))
+            // Handle timestamp visibility
+            val currentTime = timeFormatter.format(Date(message.timestamp))
+            val previousTime = previousMessage?.let { timeFormatter.format(Date(it.timestamp)) }
+            
+            // Show timestamp only if it's different from the previous message or if it's the first message
+            if (previousMessage == null || currentTime != previousTime) {
+                tvTimestamp.visibility = View.VISIBLE
+                tvTimestamp.text = currentTime
+            } else {
+                tvTimestamp.visibility = View.GONE
+            }
         }
     }
     
